@@ -6,8 +6,8 @@ import { AlertRule, Monitor } from '../types';
 
 export default function AlertsPage() {
   const [rules, setRules] = useState<AlertRule[]>([]);
-  const [monitors, setMonitors] = useState<Monitor[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [_monitors, setMonitors] = useState<Monitor[]>([]);
+  const [_loading, setLoading] = useState(true);
   const [showCreateForm, setShowCreateForm] = useState(false);
 
   const loadRules = async () => {

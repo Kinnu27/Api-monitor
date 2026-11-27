@@ -4,10 +4,12 @@ import { Server } from 'socket.io';
 import cors from 'cors';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
-import { PrismaClient } from '@prisma/client';
-import Redis from 'ioredis';
 import { Registry } from 'prom-client';
 import swaggerUi from 'swagger-ui-express';
+
+import { prisma } from './utils/prisma';
+import { redis } from './utils/redis';
+export { prisma, redis };
 
 import { logger } from './utils/logger';
 import { errorHandler } from './middleware/errorHandler';
@@ -27,14 +29,6 @@ import metricsRoutes from './routes/metrics';
 import healthRoutes from './routes/health';
 
 dotenv.config();
-
-export const prisma = new PrismaClient();
-export const redis = new Redis({
-  host: process.env.REDIS_HOST || 'localhost',
-  port: parseInt(process.env.REDIS_PORT || '6379'),
-  password: process.env.REDIS_PASSWORD || undefined,
-  maxRetriesPerRequest: 3,
-});
 
 export const metricsRegistry = new Registry();
 

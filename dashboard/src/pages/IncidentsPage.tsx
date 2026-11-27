@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { AlertCircle, CheckCircle, Clock } from 'lucide-react';
+import { RefreshCw, CheckCircle, Clock } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { incidentsApi } from '../api/client';
 import { Incident } from '../types';
-import { format, formatDistanceToNow } from 'date-fns';
+import { formatDistanceToNow } from 'date-fns';
 
 export default function IncidentsPage() {
   const [incidents, setIncidents] = useState<Incident[]>([]);

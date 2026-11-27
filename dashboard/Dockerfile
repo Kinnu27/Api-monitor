@@ -3,9 +3,16 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm ci
+RUN npm install
 
 COPY . .
+
+# VITE_* vars must be passed at build time (they are baked into the static bundle)
+ARG VITE_API_URL=http://localhost:3001
+ARG VITE_SOCKET_URL=http://localhost:3001
+ENV VITE_API_URL=$VITE_API_URL
+ENV VITE_SOCKET_URL=$VITE_SOCKET_URL
+
 RUN npm run build
 
 FROM nginx:alpine

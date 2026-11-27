@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   postgres:
     image: postgres:16-alpine
@@ -63,12 +61,13 @@ services:
     build:
       context: ./dashboard
       dockerfile: Dockerfile
+      args:
+        # VITE_* vars are baked into the static bundle at build time, NOT runtime
+        VITE_API_URL: http://localhost:3001
+        VITE_SOCKET_URL: http://localhost:3001
     container_name: api-monitor-dashboard
     ports:
       - "5173:80"
-    environment:
-      VITE_API_URL: http://localhost:3001
-      VITE_SOCKET_URL: http://localhost:3001
     depends_on:
       - server
     restart: unless-stopped

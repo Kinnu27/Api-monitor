@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Plus, RefreshCw, CheckCircle, XCircle, Clock, TrendingUp } from 'lucide-react';
+import { Plus, RefreshCw, CheckCircle, XCircle, Clock, TrendingUp, Activity } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { monitorsApi } from '../api/client';
 import { Monitor } from '../types';
@@ -111,7 +111,7 @@ export default function DashboardPage() {
         <div className="bg-slate-900 border border-slate-800 rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <p className="text-slate-400 text-sm">Total Monitors</p>
-            <Monitor className="w-5 h-5 text-blue-500" />
+            <Activity className="w-5 h-5 text-blue-500" />
           </div>
           <p className="text-3xl font-bold text-white">{monitors.length}</p>
         </div>
@@ -157,7 +157,7 @@ export default function DashboardPage() {
       <div className="space-y-4">
         {monitors.length === 0 ? (
           <div className="bg-slate-900 border border-slate-800 rounded-lg p-12 text-center">
-            <Monitor className="w-16 h-16 text-slate-600 mx-auto mb-4" />
+            <Activity className="w-16 h-16 text-slate-600 mx-auto mb-4" />
             <h3 className="text-xl font-semibold text-white mb-2">
               No monitors yet
             </h3>

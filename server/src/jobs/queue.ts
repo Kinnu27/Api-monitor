@@ -1,5 +1,5 @@
 import Bull from 'bull';
-import { redis } from '../index';
+import { redis } from '../utils/redis';
 import { logger } from '../utils/logger';
 import { monitorCheckWorker } from './monitorCheckWorker';
 import { alertWorker } from './alertWorker';
